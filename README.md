@@ -1,4 +1,13 @@
-# SEMOpx integration for Home Assistant
+# SEMOpx integration for Home Assistant _(Work in Progress)_
+
+(forked from https://github.com/custom-components/nordpool)
+
+> [!IMPORTANT]  
+> This is a work in progress and not yet ready for use.
+> 
+> This repository is only sporadically maintained.  Breaking API changes will be maintained on a best efforts basis.
+>
+
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MAXZPYVPD8XS6)
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/2ys3cdCZk)
 
