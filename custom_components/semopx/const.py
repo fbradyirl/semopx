@@ -1,12 +1,12 @@
 import voluptuous as vol
 from random import randint
 
-DOMAIN = "nordpool"
+DOMAIN = "semopx"
 RANDOM_MINUTE = randint(10, 30)
 RANDOM_SECOND = randint(0, 59)
-EVENT_NEW_HOUR = "nordpool_update_hour"
-EVENT_NEW_DAY = "nordpool_update_day"
-EVENT_NEW_PRICE = "nordpool_update_new_price"
+EVENT_NEW_HOUR = "semopx_update_hour"
+EVENT_NEW_DAY = "semopx_update_day"
+EVENT_NEW_PRICE = "semopx_update_new_price"
 SENTINEL = object()
 
 _CURRENCY_LIST = ["DKK", "EUR", "NOK", "SEK"]
@@ -16,7 +16,7 @@ CONFIG_SCHEMA = vol.Schema({DOMAIN: vol.Schema({})}, extra=vol.ALLOW_EXTRA)
 
 NAME = DOMAIN
 VERSION = "0.0.17"
-ISSUEURL = "https://github.com/custom-components/nordpool/issues"
+ISSUEURL = "https://github.com/custom-components/semopx/issues"
 
 
 tzs = {

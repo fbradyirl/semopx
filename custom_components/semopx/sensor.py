@@ -73,7 +73,7 @@ def _dry_setup(hass, config, add_devices, discovery_info=None):
     use_cents = config.get("price_in_cents")
     ad_template = config.get("additional_costs")
     api = hass.data[DOMAIN]
-    sensor = NordpoolSensor(
+    sensor = SemopxSensor(
         friendly_name,
         region,
         price_type,
@@ -102,7 +102,7 @@ async def async_setup_entry(hass, config_entry, async_add_devices):
     return True
 
 
-class NordpoolSensor(SensorEntity):
+class SemopxSensor(SensorEntity):
     "Sensors data"
 
     _attr_device_class = SensorDeviceClass.MONETARY
@@ -202,7 +202,7 @@ class NordpoolSensor(SensorEntity):
 
     @property
     def unique_id(self):
-        name = "nordpool_%s_%s_%s_%s_%s_%s" % (
+        name = "semopx_%s_%s_%s_%s_%s_%s" % (
             self._price_type,
             self._area,
             self._currency,

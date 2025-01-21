@@ -46,7 +46,7 @@ _LOGGER = logging.getLogger(__name__)
 PLATFORMS: list[Platform] = [Platform.SENSOR]
 
 
-class NordpoolData:
+class SemopxData:
     """Holds the data"""
 
     def __init__(self, hass: HomeAssistant):
@@ -138,7 +138,7 @@ class NordpoolData:
 async def _dry_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up using yaml config file."""
     if DOMAIN not in hass.data:
-        api = NordpoolData(hass)
+        api = SemopxData(hass)
         hass.data[DOMAIN] = api
         _LOGGER.debug("Added %s to hass.data", DOMAIN)
         await async_setup_services(hass)
@@ -206,7 +206,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up nordpool as config entry."""
+    """Set up semopx as config entry."""
     res = await _dry_setup(hass, entry.data)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 

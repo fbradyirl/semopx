@@ -1,10 +1,10 @@
 {
     "config": {
-        "title": "Nordpool",
+        "title": "Semopx",
         "step": {
             "user": {
-                "title": "Nordpool-sensor",
-                "description": "Opret en Nordpool-sensor",
+                "title": "Semopx-sensor",
+                "description": "Opret en Semopx-sensor",
                 "data": {
                     "region": "Region",
                     "friendly_name": "Visningsnavn",
@@ -20,7 +20,7 @@
         },
         "error": {
             "name_exists": "Navnet eksisterer allerede",
-            "invalid_template": "Skabelonen indeholder fejl, se https://github.com/custom-components/nordpool"
+            "invalid_template": "Skabelonen indeholder fejl, se https://github.com/custom-components/semopx"
         }
     }
 }

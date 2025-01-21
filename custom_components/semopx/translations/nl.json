@@ -1,10 +1,10 @@
 {
     "config": {
-        "title": "Nordpool",
+        "title": "Semopx",
         "step": {
             "user": {
-                "title": "Nordpool Sensor",
-                "description": "Configureer een Nordpool sensor",
+                "title": "Semopx Sensor",
+                "description": "Configureer een Semopx sensor",
                 "data": {
                     "region": "Regio",
                     "currency": "Munteenheid",
@@ -19,7 +19,7 @@
         },
         "error": {
             "name_exists": "Naam bestaat al",
-            "invalid_template": "Het template is ongeldig, zie https://github.com/custom-components/nordpool"
+            "invalid_template": "Het template is ongeldig, zie https://github.com/custom-components/semopx"
         }
     }
 }

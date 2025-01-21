@@ -1,10 +1,10 @@
 {
     "config": {
-        "title": "Nordpool",
+        "title": "Semopx",
         "step": {
             "user": {
-                "title": "Nordpool Sensors",
-                "description": "Iestatīt Nordpool biržas sensoru",
+                "title": "Semopx Sensors",
+                "description": "Iestatīt Semopx biržas sensoru",
                 "data": {
                     "region": "Reģions",
                     "currency": "Valūta",
@@ -19,7 +19,7 @@
         },
         "error": {
             "name_exists": "Šāds nosaukums jau eksistē",
-            "invalid_template": "Veidne nav korekta, skatīt https://github.com/custom-components/nordpool"
+            "invalid_template": "Veidne nav korekta, skatīt https://github.com/custom-components/semopx"
         }
     }
 }

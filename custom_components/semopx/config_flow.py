@@ -1,4 +1,4 @@
-"""Adds config flow for nordpool."""
+"""Adds config flow for semopx."""
 import logging
 import re
 
@@ -15,8 +15,8 @@ price_types = sorted(list(_PRICE_IN.keys()))
 _LOGGER = logging.getLogger(__name__)
 
 
-class NordpoolFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
-    """Config flow for Nordpool."""
+class SemopxFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
+    """Config flow for Semopx."""
 
     VERSION = 1
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
@@ -44,7 +44,7 @@ class NordpoolFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
 
             template_ok = await self._valid_template(user_input["additional_costs"])
             if template_ok:
-                return self.async_create_entry(title="Nordpool", data=user_input)
+                return self.async_create_entry(title="Semopx", data=user_input)
             else:
                 self._errors["base"] = "invalid_template"
 

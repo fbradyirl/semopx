@@ -1,10 +1,10 @@
 {
     "config": {
-        "title": "Nord Pool",
+        "title": "SEMOpx",
         "step": {
             "user": {
                 "title": "Sensor",
-                "description": "Konfigurera en Nord Pool-sensor",
+                "description": "Konfigurera en SEMOpx-sensor",
                 "data": {
                     "region": "Region",
                     "friendly_name": "Visningsnamn",
@@ -20,7 +20,7 @@
         },
         "error": {
             "name_exists": "Namnet existerar redan",
-            "invalid_template": "Mallen är ogiltig, se https://github.com/custom-components/nordpool"
+            "invalid_template": "Mallen är ogiltig, se https://github.com/custom-components/semopx"
         }
     }
 }

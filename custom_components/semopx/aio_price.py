@@ -5,14 +5,18 @@ import backoff
 from datetime import date, datetime, timedelta
 from dateutil.parser import parse as parse_dt
 from pytz import timezone
+from pytz import all_timezones
 
 _LOGGER = logging.getLogger(__name__)
+
 
 class InvalidValueException(ValueError):
     pass
 
+
 class CurrencyMismatch(ValueError):
     pass
+
 
 class AioPrices:
     """Interface"""
@@ -79,11 +83,15 @@ class AioPrices:
                 url = f'{self.SEMOPX_API_RETRIEVAL_URL}/{resource_name}'
                 semopx_resp_dict = await self._async_fetch(url)
 
+                if not semopx_resp_dict:
+                    _LOGGER.error("Failed to fetch data for resource: %s", resource_name)
+                    continue
+
                 context_prefix = self._determine_context_prefix(resource_name)
                 if not context_prefix:
                     continue
 
-                for data_set_list in semopx_resp_dict['rows']:
+                for data_set_list in semopx_resp_dict.get('rows', []):
                     if self.market_area not in data_set_list[0][1]:
                         continue
 
@@ -91,7 +99,12 @@ class AioPrices:
                     self._merge_prices(rec_dict, key_list, data_set_list, context_prefix)
 
         self._finalize_records(rec_dict)
-        return rec_dict
+
+        # Debug: log the final record dictionary
+        _LOGGER.debug("Final record dictionary: %s", rec_dict)
+
+        # Ensure 'areas' key is always present
+        return {"areas": rec_dict} if rec_dict else {"areas": {}}
 
     def _determine_context_prefix(self, resource_name):
         """Determine context prefix based on resource name."""
@@ -109,7 +122,11 @@ class AioPrices:
     def _parse_semopx_time(self, datetime_str):
         """Parse SEMOpx time."""
         utc_dt = parse_dt(datetime_str)
-        local_dt = utc_dt.astimezone(timezone(self.timezone))
+        if self.timezone not in all_timezones:
+            raise ValueError(f"Invalid timezone: {self.timezone}")
+
+        local_tz = timezone(self.timezone)
+        local_dt = utc_dt.astimezone(local_tz)
         return int(utc_dt.timestamp()), local_dt
 
     def _merge_prices(self, rec_dict, key_list, data_set_list, context_prefix):

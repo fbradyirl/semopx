@@ -1,10 +1,10 @@
 {
     "config": {
-        "title": "Nordpool",
+        "title": "Semopx",
         "step": {
             "user": {
-                "title": "Nordpool sensori",
-                "description": "Nordpool sensorin asetukset",
+                "title": "Semopx sensori",
+                "description": "Semopx sensorin asetukset",
                 "data": {
                     "region": "Alue",
                     "friendly_name": "Nimi käyttöliittymässä",
@@ -20,7 +20,7 @@
         },
         "error": {
             "name_exists": "Nimi on jo käytössä",
-            "invalid_template": "Template on virheellinen, katso https://github.com/custom-components/nordpool"
+            "invalid_template": "Template on virheellinen, katso https://github.com/custom-components/semopx"
         }
     }
 }

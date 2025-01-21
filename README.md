@@ -1,12 +1,12 @@
-# Nord Pool integration for Home Assistant
+# SEMOpx integration for Home Assistant
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MAXZPYVPD8XS6)
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/2ys3cdCZk)
 
-Nord Pool is a service provider that operates an electricity market and power system services, including the exchange of electricity on a spot market Nordics and Baltic countries.
+SEMOpx is a service provider that operates an electricity market and power system services, including the exchange of electricity in ROI and Northern Ireland.
 
-This integration provides the spot market (hourly) electricity prices for the Nordic, Baltic and part of Western Europe.
+This integration provides the spot market (hourly) electricity prices for ROI and Northern Ireland.
 
-The Nordpool sensor provides the current price with today's and tomorrow's prices as attributes. Prices become available around 13:00.
+The Semopx sensor provides the current price with today's and tomorrow's prices as attributes. Prices become available around 13:00.
 
 [ApexCharts](https://github.com/RomRider/apexcharts-card) card is recommended for visualization of the data in Home Assistant.<br>
 <img src="https://user-images.githubusercontent.com/5879533/210006998-d8ebd401-5a92-471d-9072-4e6b1c69b779.png" width="500"/>
@@ -19,32 +19,32 @@ The Nordpool sensor provides the current price with today's and tomorrow's price
 
 ### Getting started
 - Video tutorial: [variable energy prices in HA](https://youtu.be/NFJ510uhswY) by Smart Home Junkie
-- Written guide: [Nordpool and ApexChart](https://www.creatingsmarthome.com/index.php/2022/09/17/home-assistant-nord-pool-spot-prices-and-how-to-automate-devices-for-cheapest-hours/) by Creating Smart Home
-- Community: [Nordpool integration](https://community.home-assistant.io/t/any-good-ideas-are-welcome-nordpool-energy-price-per-hour/) on Home Assistant Community
+- Written guide: [Semopx and ApexChart](https://www.creatingsmarthome.com/index.php/2022/09/17/home-assistant-nord-pool-spot-prices-and-how-to-automate-devices-for-cheapest-hours/) by Creating Smart Home
+- Community: [Semopx integration](https://community.home-assistant.io/t/any-good-ideas-are-welcome-semopx-energy-price-per-hour/) on Home Assistant Community
 - Cheapest hours sensor: [Cheapest Energy Hours](https://github.com/TheFes/cheapest-energy-hours) to create an sensor with the cheapest hours
 
 ## Installation
 
 ### Option 1: HACS
 
-- Follow [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=custom-components&repository=nordpool&category=integration) and install it
+- Follow [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=custom-components&repository=semopx&category=integration) and install it
 - Restart Home Assistant
 
   *or*
 - Go to `HACS` -> `Integrations`,
 - Select `+`,
-- Search for `nordpool` and install it,
+- Search for `semopx` and install it,
 - Restart Home Assistant
 
 ### Option 2: Manual
-Download the [latest release](https://github.com/custom-components/nordpool/releases)
+Download the [latest release](https://github.com/custom-components/semopx/releases)
 
 ```bash
 cd YOUR_HASS_CONFIG_DIRECTORY    # same place as configuration.yaml
-mkdir -p custom_components/nordpool
-cd custom_components/nordpool
-unzip nordpool-X.Y.Z.zip
-mv nordpool-X.Y.Z/custom_components/nordpool/* .
+mkdir -p custom_components/semopx
+cd custom_components/semopx
+unzip semopx-X.Y.Z.zip
+mv semopx-X.Y.Z/custom_components/semopx/* .
 ```
 
 ## Usage
@@ -64,10 +64,10 @@ mv nordpool-X.Y.Z/custom_components/nordpool/* .
 ### Option 1: UI
 - Go to `Settings` -> `Devices & Services`
 - Select `+ Add Integration`
-- Search for `nordpool` and select it
+- Search for `semopx` and select it
 - Fill in the required values and press `Submit`
 
-Tip: By default, the integration will create a device with the name `nordpool_<energy_scale>_<region>_<currency>_<some-numbers>`. It is recommended to rename the device and all its entities to `nordpool`. If you need to recreate your sensor (for example, to change the additional cost), all automations and dashboards keep working.
+Tip: By default, the integration will create a device with the name `semopx_<energy_scale>_<region>_<currency>_<some-numbers>`. It is recommended to rename the device and all its entities to `semopx`. If you need to recreate your sensor (for example, to change the additional cost), all automations and dashboards keep working.
 
 ### Option 2: YAML
 Set up the sensor using in `configuration.yaml`.
@@ -75,14 +75,14 @@ Set up the sensor using in `configuration.yaml`.
 #### Minimal configuration:
 ```yaml
 sensor:
-  - platform: nordpool
+  - platform: semopx
     region: "NO1"
 ```
 
 #### Example configuration:
 ```yaml
 sensor:
-  - platform: nordpool
+  - platform: semopx
     # Country/region to get the energy prices for.
     region: "NO1"
 
@@ -111,7 +111,7 @@ sensor:
     additional_costs: "{{0.0|float}}"
 ```
 ### Regions
-See the [Nord Pool region map](https://www.nordpoolgroup.com/en/maps/) for details
+See the [SEMOpx region map](https://www.semopxgroup.com/en/maps/) for details
 
 | Country   | Region code |
 | --------- | ----------- |
@@ -132,7 +132,7 @@ See the [Nord Pool region map](https://www.nordpoolgroup.com/en/maps/) for detai
 | Sweden    | SE1, <br> SE2, <br> SE3, <br> SE4 |
 
 ### Additional costs
-The idea behind `additional_costs` is to allow the users to add costs related to the official price from Nordpool:
+The idea behind `additional_costs` is to allow the users to add costs related to the official price from Semopx:
 - Add simple or complex tariffs
 - Calculate VAT
 
@@ -140,7 +140,7 @@ There are two special special arguments in that can be used in the template ([in
 - ```now()```: this always refer to the current hour of the price
 - ```current_price```: price for the current hour. This can be used for example be used to calculate your own VAT or add overhead cost.
 
-Note: When configuring Nordpool using the UI, things like VAT and additional costs cannot be changed. If your energy supplier or region changes the additional costs or taxes on a semi-regular basis, the YAML configuration or a helper (example 4) work best.
+Note: When configuring Semopx using the UI, things like VAT and additional costs cannot be changed. If your energy supplier or region changes the additional costs or taxes on a semi-regular basis, the YAML configuration or a helper (example 4) work best.
 
 #### Example 1: Overhead per kWh
 
@@ -219,14 +219,14 @@ Add 21% tax and overhead cost stored in a helper
 - ```price_in_cents```: Boolean if prices is in cents
 
 ## Actions
-Actions has recently been added. The action will just forward the raw response from the Nordpool API so you can capture the value your are interested in.
+Actions has recently been added. The action will just forward the raw response from the Semopx API so you can capture the value your are interested in.
 
 Example for an automation that get the last months averge price.
 ```yaml
 alias: Example automation action call with storing with parsing and storing result
 triggers: null
 actions:
-  - action: nordpool.yearly
+  - action: semopx.yearly
     data:
       currency: NOK
       area: NO2
@@ -248,8 +248,8 @@ Add this to your `configuration.yaml` and restart Home Assistant to debug the co
 ```yaml
 logger:
   logs:
-    nordpool: debug
-    custom_components.nordpool: debug
-    custom_components.nordpool.sensor: debug
-    custom_components.nordpool.aio_price: debug
+    semopx: debug
+    custom_components.semopx: debug
+    custom_components.semopx.sensor: debug
+    custom_components.semopx.aio_price: debug
 ```

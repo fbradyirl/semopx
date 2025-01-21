@@ -1,7 +1,7 @@
 yearly:
   name: yearly
   description: >-
-    Action that gets the raw aggrigated yearly prices from Nordpool
+    Action that gets the raw aggrigated yearly prices from Semopx
   fields:
     currency:
       description: "What currecy should the prices be returned in"
@@ -16,7 +16,7 @@ yearly:
 daily:
   name: daily
   description: >-
-    Action that gets the raw aggrigated daily prices from Nordpool
+    Action that gets the raw aggrigated daily prices from Semopx
   fields:
     currency:
       description: "What currecy should the prices be returned in"
@@ -32,7 +32,7 @@ daily:
 monthly:
   name: monthly
   description: >-
-    Action that gets the raw aggrigated monthly prices from Nordpool
+    Action that gets the raw aggrigated monthly prices from Semopx
   fields:
     currency:
       description: "What currecy should the prices be returned in"
@@ -47,7 +47,7 @@ monthly:
 hourly:
   name: hourly
   description: >-
-    Action that gets the raw hourly price for spesific date from Nordpool
+    Action that gets the raw hourly price for spesific date from Semopx
   fields:
     currency:
       description: "What currecy should the prices be returned in"

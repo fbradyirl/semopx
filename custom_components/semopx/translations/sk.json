@@ -1,10 +1,10 @@
 {
     "config": {
-        "title": "Nordpool",
+        "title": "Semopx",
         "step": {
             "user": {
-                "title": "Nordpool snímač",
-                "description": "Nastavte snímač Nordpool",
+                "title": "Semopx snímač",
+                "description": "Nastavte snímač Semopx",
                 "data": {
                     "region": "Región",
                     "currency": "Mena",
@@ -19,7 +19,7 @@
         },
         "error": {
             "name_exists": "Názov už existuje",
-            "invalid_template": "Šablóna je neplatná, skontrolujte https://github.com/custom-components/nordpool"
+            "invalid_template": "Šablóna je neplatná, skontrolujte https://github.com/custom-components/semopx"
         }
     }
 }

@@ -113,35 +113,35 @@ async def async_setup_services(hass: HomeAssistant):
         return value
 
     hass.services.async_register(
-        domain="nordpool",
+        domain="semopx",
         service="hourly",
         service_func=hourly,
         schema=HOURLY_SCHEMA,
         supports_response=SupportsResponse.OPTIONAL,
     )
     hass.services.async_register(
-        domain="nordpool",
+        domain="semopx",
         service="yearly",
         service_func=yearly,
         schema=YEAR_SCHEMA,
         supports_response=SupportsResponse.OPTIONAL,
     )
     hass.services.async_register(
-        domain="nordpool",
+        domain="semopx",
         service="monthly",
         service_func=monthly,
         schema=YEAR_SCHEMA,
         supports_response=SupportsResponse.OPTIONAL,
     )
     hass.services.async_register(
-        domain="nordpool",
+        domain="semopx",
         service="daily",
         service_func=daily,
         schema=YEAR_SCHEMA,
         supports_response=SupportsResponse.OPTIONAL,
     )
     hass.services.async_register(
-        domain="nordpool",
+        domain="semopx",
         service="weekly",
         service_func=weekly,
         schema=YEAR_SCHEMA,

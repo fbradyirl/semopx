@@ -1,10 +1,10 @@
 {
     "config": {
-        "title": "Nordpool",
+        "title": "Semopx",
         "step": {
             "user": {
-                "title": "Nordpool Sensor",
-                "description": "Opprett ein Nordpool-sensor",
+                "title": "Semopx Sensor",
+                "description": "Opprett ein Semopx-sensor",
                 "data": {
                     "region": "Region",
                     "currency": "NOK",
@@ -19,7 +19,7 @@
         },
         "error": {
             "name_exists": "Namnet eksisterer allereie",
-            "invalid_template": "Malen inneheld ein feil, sjå https://github.com/custom-components/nordpool"
+            "invalid_template": "Malen inneheld ein feil, sjå https://github.com/custom-components/semopx"
         }
     }
 }

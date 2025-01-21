@@ -3,62 +3,62 @@ In this example we make a simple but useful lovelace card with price information
 
 The final result will look like this:
 
-![Simple](/lovelace_example/nordpool.png)
+![Simple](/lovelace_example/semopx.png)
 
-First of all we have to make a sensor for each hour. This can be done using the provided python script or by manually making template sensors in sensors.yaml. In this example we make template sensors. If you live in another price area than "Krsand" your nordpool sensors entity id will be different from mine. So remember to replace "sensor.nordpool_kwh_krsand_nok_2_095_025" with your own. Your "unit_of_measurement" may also be different from mine as well.
+First of all we have to make a sensor for each hour. This can be done using the provided python script or by manually making template sensors in sensors.yaml. In this example we make template sensors. If you live in another price area than "Krsand" your semopx sensors entity id will be different from mine. So remember to replace "sensor.semopx_kwh_krsand_nok_2_095_025" with your own. Your "unit_of_measurement" may also be different from mine as well.
 Add to your sensors.yaml:
 ````
 # TEMPLATE SENSORS
 - platform: template
   sensors:
-    # NORDPOOL PRICES
-    nordpool_today_hr_00_01:
-      entity_id: sensor.nordpool_kwh_krsand_nok_2_095_025
+    # SEMOPX PRICES
+    semopx_today_hr_00_01:
+      entity_id: sensor.semopx_kwh_krsand_nok_2_095_025
       friendly_name: "Today hour 1"
       icon_template: mdi:cash
       unit_of_measurement: "øre"
-      value_template: "{{ states.sensor.nordpool_kwh_krsand_nok_2_095_025.attributes.today[0] }}"
+      value_template: "{{ states.sensor.semopx_kwh_krsand_nok_2_095_025.attributes.today[0] }}"
 
-    nordpool_today_hr_01_02:
-      entity_id: sensor.nordpool_kwh_krsand_nok_2_095_025
+    semopx_today_hr_01_02:
+      entity_id: sensor.semopx_kwh_krsand_nok_2_095_025
       friendly_name: "Today hour 2"
       icon_template: mdi:cash
       unit_of_measurement: "øre"
-      value_template: "{{ states.sensor.nordpool_kwh_krsand_nok_2_095_025.attributes.today[1] }}"
+      value_template: "{{ states.sensor.semopx_kwh_krsand_nok_2_095_025.attributes.today[1] }}"
 
 ### and so on down to...
 
-    nordpool_today_hr_23_24:
-      entity_id: sensor.nordpool_kwh_krsand_nok_2_095_025
+    semopx_today_hr_23_24:
+      entity_id: sensor.semopx_kwh_krsand_nok_2_095_025
       friendly_name: "Today hour 24"
       icon_template: mdi:cash
       unit_of_measurement: "øre"
-      value_template: "{{ states.sensor.nordpool_kwh_krsand_nok_2_095_025.attributes.today[23] }}"
+      value_template: "{{ states.sensor.semopx_kwh_krsand_nok_2_095_025.attributes.today[23] }}"
 
 ### and than for the day ahead...
 
-    nordpool_tomorrow_hr_00_01:
-      entity_id: sensor.nordpool_kwh_krsand_nok_2_095_025
+    semopx_tomorrow_hr_00_01:
+      entity_id: sensor.semopx_kwh_krsand_nok_2_095_025
       friendly_name: "Tomorrow hour 1"
       icon_template: mdi:cash
       unit_of_measurement: "øre"
-      value_template: "{{ states.sensor.nordpool_kwh_krsand_nok_2_095_025.attributes.tomorrow[0] }}"
+      value_template: "{{ states.sensor.semopx_kwh_krsand_nok_2_095_025.attributes.tomorrow[0] }}"
 
-    nordpool_tomorrow_hr_01_02:
-      entity_id: sensor.nordpool_kwh_krsand_nok_2_095_025
+    semopx_tomorrow_hr_01_02:
+      entity_id: sensor.semopx_kwh_krsand_nok_2_095_025
       friendly_name: "Tomorrow hour 2"
       icon_template: mdi:cash
       unit_of_measurement: "øre"
-      value_template: "{{ states.sensor.nordpool_kwh_krsand_nok_2_095_025.attributes.tomorrow[1] }}"
+      value_template: "{{ states.sensor.semopx_kwh_krsand_nok_2_095_025.attributes.tomorrow[1] }}"
 
 ### and so on down to...
 
-    nordpool_tomorrow_hr_23_24:
-      entity_id: sensor.nordpool_kwh_krsand_nok_2_095_025
+    semopx_tomorrow_hr_23_24:
+      entity_id: sensor.semopx_kwh_krsand_nok_2_095_025
       friendly_name: "Tomorrow hour 24"
       icon_template: mdi:cash
       unit_of_measurement: "øre"
-      value_template: "{{ states.sensor.nordpool_kwh_krsand_nok_2_095_025.attributes.tomorrow[23] }}"
+      value_template: "{{ states.sensor.semopx_kwh_krsand_nok_2_095_025.attributes.tomorrow[23] }}"
       
 ````
 
@@ -80,7 +80,7 @@ views:
             title: Energy prices
             show_header_toggle: false
             entities:
-              - entity: sensor.nordpool_kwh_krsand_nok_2_095_025
+              - entity: sensor.semopx_kwh_krsand_nok_2_095_025
                 type: custom:multiple-entity-row
                 name: Todays prices (øre/kWh)
                 unit: " "
@@ -94,13 +94,13 @@ views:
                   - attribute: current_price
                     name: Current
                 secondary_info:
-                  entity: sensor.nordpool_kwh_krsand_nok_2_095_025
+                  entity: sensor.semopx_kwh_krsand_nok_2_095_025
                   attribute: average
                   name: "Average:"
           - type: custom:flex-table-card
             sort_by: state+
             entities:
-              include: sensor.nordpool_today_h*
+              include: sensor.semopx_today_h*
             columns:
               - name: Today (sorted ascending)
                 prop: name
@@ -110,7 +110,7 @@ views:
           - type: custom:flex-table-card
             sort_by: state+
             entities:
-              include: sensor.nordpool_tomorrow_h*
+              include: sensor.semopx_tomorrow_h*
             columns:
               - name: Tomorrow (sorted ascen.)
                 prop: name
